@@ -2,7 +2,7 @@
 
 ## Description
 
-This repository contains MATLAB scripts to compute the $\Delta$47, $\Delta$48, and $\Delta$49 of Calcite precipitated from a CO$_2$-fed solution.  If you use this code, I would much appreciate a citation to the following papers:
+This repository contains MATLAB scripts to compute the \Delta 47, $\Delta$48, and $\Delta$49 of Calcite precipitated from a CO$_2$-fed solution.  If you use this code, I would much appreciate a citation to the following papers:
 
 Chen et al. (2018) 
 
