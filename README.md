@@ -2,15 +2,19 @@
 
 ## Description
 
-This repository contains MATLAB scripts to compute the Δ<sub>47</sub>, Δ<sub>48</sub>, and Δ<sub>49</sub> of Calcite precipitated from a CO<sub>2</sub>-fed solution.  If you use this code, I would much appreciate a citation to the following papers:
+This repository contains MATLAB scripts to compute the Δ<sub>47</sub>, Δ<sub>48</sub>, and Δ<sub>49</sub> of Calcite precipitated from a CO<sub>2</sub>-fed solution. The full descrition of the equations and parameters can be found in:
+
+Watkins, J., and Devriendt, L., A generalizable box model for kinetic clumped isotope effects in the CaCO<sub>3</sub>-DIC-H<sub>2</sub>O system, submitted to Geochemistry, Geophysics, Geosystems.
+
+If you use this code, I recommend that you cite the following papers:
 
 Chen et al. (2018) 
 
-Uchiwawa ??? (2021)
+Uchiwawa et al. (2021)
 
 and
 
-Watkins, J. W. and L. Devrient (2022) XX
+Watkins, J.M. and L. Devrient (2022)
 
 BibTeX:
 
