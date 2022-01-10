@@ -6,15 +6,13 @@ This repository contains MATLAB scripts to compute the Δ<sub>47</sub>, Δ<sub>4
 
 Watkins, J., and Devriendt, L., A generalizable box model for kinetic clumped isotope effects in the CaCO<sub>3</sub>-DIC-H<sub>2</sub>O system, submitted to Geochemistry, Geophysics, Geosystems.
 
-If you use this code, I recommend that you cite the following papers:
+
+
+If you use this code, I also recommend that you cite the following papers:
 
 Chen et al. (2018) 
-
+Christensen et al. (2021)
 Uchiwawa et al. (2021)
-
-and
-
-Watkins, J.M. and L. Devrient (2022)
 
 BibTeX:
 
@@ -27,7 +25,15 @@ BibTeX:
 	  year={2021},
 	  publisher={Elsevier}
 	}
-	
+	@article{christensen2021isotopic,
+  	title={Isotopic fractionation accompanying CO2 hydroxylation and carbonate precipitation from high pH waters at The Cedars, California, USA},
+  	author={Christensen, John N and Watkins, James M and Devriendt, Laurent S and DePaolo, Donald J and Conrad, Mark E and Voltolini, Marco and Yang, Wenbo and Dong, Wenming},
+  	journal={Geochimica et Cosmochimica Acta},
+  	volume={301},
+  	pages={91--115},
+  	year={2021},
+  	publisher={Elsevier}
+}
 	@article{chen2018carbonic,
 	  title={Carbonic anhydrase, coral calcification and a new model of stable isotope vital effects},
 	  author={Chen, Sang and Gagnon, Alexander C and Adkins, Jess F},
