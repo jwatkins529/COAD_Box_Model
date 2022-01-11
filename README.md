@@ -47,7 +47,7 @@ Calcite388 is an update to the ion-by-ion model of Watkins and Hunt (2015) that 
 </ul>
 and execute the script. This will produce a figure with 5 panels showing the &delta;<sup>13</sup>C, &delta;<sup>18</sup>O, &Delta;<sub>47</sub>, &Delta;<sub>48</sub>, and &Delta;<sub>49</sub> of DIC species and calcite as a function of pH for a specified growth rate. To change the growth rate, modify the value of 'Rate_spec' on line 27 of <b>Ion_by_ion_D61_D62_D63_D64_D65.m</b>.  
 
-<img src="./Ion_by_ion_D63_D64_D65_5C.png" alt="Figure 1" style="height: 400px; width:400px;"/>
+<img src="Ion_by_ion_D63_D64_D65_5C.png" alt="Figure 1" style="height: 1200px; width:1200px;"/>
 
 ## The combined ExClump388-Calcite388 Box Model
 ExClump388 describes isotope reaction kinetics in the DIC-H<sub>2</sub>O system and Calcite388 describes isotope reaction kinetics in the CaCO<sub>3</sub>-DIC system.  This script stitches these two models together to describe isotope reaction kinetics in the full CaCO<sub>3</sub>-DIC-H<sub>2</sub>O system in the special case where there is a constant CO<sub>2</sub> flux. 
