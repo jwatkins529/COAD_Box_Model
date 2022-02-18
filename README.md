@@ -17,12 +17,8 @@ If you use these codes, I recommend that you also cite the following papers:
 In order to run the scripts you will need Matlab. The codes were produced using Matlab2017b but earlier and later versions will probably work just as well. 
 
 ## Scripts
-### 1. ExClump388.m - A model for kinetic isotope effects attending reactions among DIC species and water
-ExClump388 is a simplied version of IsoDIC (Guo, 2020).  The first script, <b>ExClump388_IsoDIC_comparison.m</b>, validates the simplifications by way of comparison to the 'gold standard' of IsoDIC and reproduces Fig. 2 of the paper. Note that this script uses exactly the same equilibrium and kinetic constants as IsoDIC, which differ from those used in the other scripts (i.e., in Tables 1-5 of the paper).  
 
-[image here]
-
-### 2. Ion_by_ion_D61_D62_D63_D64_D65.m - An ion-by-ion model for kinetic isotope effects attending calcite precipitation
+### 1. Ion_by_ion_D61_D62_D63_D64_D65.m - A model for kinetic isotope effects in the CaCO<sub>3</sub>-DIC system
 This script provides an update to the ion-by-ion model of Watkins and Hunt (2015) in that it now includes &Delta;<sub>64</sub> and &Delta;<sub>65</sub>. The script <b>Ion_by_ion_D61_D62_D63_D64_D65.m</b> was used to produce Fig. 2 of the paper. To run, simply download the script along with the following data files: 
 <ul>
 	<li>Romanek_to_5C.txt
@@ -34,7 +30,7 @@ and execute the script. This will produce a figure with 5 panels showing the &de
 
 <img src="Ion_by_ion_D63_D64_D65_5C.png" alt="Figure 2" style="width:600px;"/>
 
-### 3. The combined COAD Box Model
+### 2. The combined COAD Box Model
 The COAD box model allows one to calculate kinetic isotopes effects in the full CaCO<sub>3</sub>-DIC-H<sub>2</sub>O system. The script <b>Run_COAD_Box_Model.m</b> was used to produce Fig. 6 of the paper.
 
 The following scripts are required: 
@@ -44,7 +40,7 @@ The following scripts are required:
 	<li>Run_COAD_Box_Model.m - this is used to run COAD_Box_Model.m and post-process the outputs
 	<li>Tang_5C.m - data from Tang et al. (2014)
 </ul>
-To run, put all files in same directory and execute <b>Run_COAD_Box_Model.m</b>. This will output a set curves for the 1000ln<sup>18</sup>&alpha; and &Delta;<sub>63</sub> of calcite ('Default Model') as a function of pH for a specified <i>F</i><sub>CO<sub>2</sub></sub>.  The value of <i>F</i><sub>CO<sub>2</sub></sub> can be changed on line 32 of <b>ExClump388_Calcite388_Box_Model.m</b>. The curves for the non-default models (middle and right panels) can be obtained by changing the parameters as instructed in the paper. 
+To run, put all files in same directory and execute <b>Run_COAD_Box_Model.m</b>. This will output a set curves for the 1000ln<sup>18</sup>&alpha; and &Delta;<sub>63</sub> of calcite ('Default Model') as a function of pH for a specified <i>F</i><sub>CO<sub>2</sub></sub>.  The value of <i>F</i><sub>CO<sub>2</sub></sub> can be changed in <b>COAD_Box_Model_.m</b>. The curves for the non-default models (middle and right panels) can be obtained by changing the parameters as instructed in the paper. 
 
-<img src="ExClump388_Calcite388_Box_Model.png" alt="Figure 3" style="width:1200px;"/>
+<img src="Fig_6_COAD.png" alt="Figure 3" style="width:1200px;"/>
 
