@@ -4,6 +4,8 @@
 
 This repository contains MATLAB scripts to compute the &delta;<sup>13</sup>C, &delta;<sup>18</sup>O, Δ<sub>47</sub>, Δ<sub>48</sub>, and Δ<sub>49</sub> of calcite precipitated from a CO<sub>2</sub>-fed solution. The full descrition of the model and parameters can be found in: Watkins, J. and Devriendt, L. 2022, A combined model for kinetic clumped isotope effects in the CaCO<sub>3</sub>-DIC-H<sub>2</sub>O system, submitted to Geochemistry, Geophysics, Geosystems.
 
+[![DOI](https://zenodo.org/badge/445698824.svg)](https://zenodo.org/badge/latestdoi/445698824)
+
 If you use these codes, I recommend that you also cite the following papers:
 <ol>
 	<li> Watkins, J.M. and Hunt, J.D., 2015. A process-based model for non-equilibrium clumped isotope effects in carbonates. Earth and Planetary Science Letters, 432, pp.152-165.
