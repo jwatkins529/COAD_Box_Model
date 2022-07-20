@@ -42,5 +42,4 @@ The following scripts are required:
 </ul>
 To run, put all files in same directory and execute <b>Run_COAD_Box_Model.m</b>. This will output a set curves for the 1000ln<sup>18</sup>&alpha; and &Delta;<sub>63</sub> of calcite ('Default Model') as a function of pH for a specified <i>F</i><sub>CO<sub>2</sub></sub>.  The value of <i>F</i><sub>CO<sub>2</sub></sub> can be changed in <b>COAD_Box_Model_.m</b>. The curves for the non-default models (middle and right panels) can be obtained by changing the parameters as instructed in the paper. 
 
-<img src="Fig_6_COAD.png" alt="Figure 3" style="width:1200px;"/>
-
+![Fig_6_COAD](https://user-images.githubusercontent.com/97322678/180054059-ed40abd6-01f6-439d-9a54-602245087359.png)
