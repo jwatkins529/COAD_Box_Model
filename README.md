@@ -7,11 +7,16 @@ This repository contains MATLAB scripts to compute the &delta;<sup>13</sup>C, &d
 [![DOI](https://zenodo.org/badge/445698824.svg)](https://zenodo.org/badge/latestdoi/445698824)
 
 If you use these codes, I ask you also cite the following papers:
-<ol>
-	<li> Watkins, J.M. and Hunt, J.D., 2015. A process-based model for non-equilibrium clumped isotope effects in carbonates. Earth and Planetary Science Letters, 432, pp.152-165. [![DOI](https://img.shields.io/doi/10.1016/j.epsl.2015.09.042?style=flat-square)](https://doi.org/10.1016/j.epsl.2015.09.042)
-	<li> Chen, S., Gagnon, A.C. and Adkins, J.F., 2018. Carbonic anhydrase, coral calcification and a new model of stable isotope vital effects. Geochimica et Cosmochimica Acta, 236, pp.179-197.
-	<li> Uchikawa, J., Chen, S., Eiler, J.M., Adkins, J.F. and Zeebe, R.E., 2021. Trajectory and timescale of oxygen and clumped isotope equilibration in the dissolved carbonate system under normal and enzymatically-catalyzed conditions at 25° C. Geochimica et Cosmochimica Acta, 314, pp.313-333.
-</ol>
+
+1. Watkins, J.M. and Hunt, J.D., 2015. A process-based model for non-equilibrium clumped isotope effects in carbonates. *Earth and Planetary Science Letters*, 432, pp.152–165.  
+   [![DOI](https://img.shields.io/badge/DOI-10.1016%2Fj.epsl.2015.09.042-blue)](https://doi.org/10.1016/j.epsl.2015.09.042)
+
+2. Chen, S., Gagnon, A.C. and Adkins, J.F., 2018. Carbonic anhydrase, coral calcification and a new model of stable isotope vital effects. *Geochimica et Cosmochimica Acta*, 236, pp.179–197.  
+   [![DOI](https://img.shields.io/badge/DOI-10.1016%2Fj.gca.2018.02.032-blue)](https://doi.org/10.1016/j.gca.2018.02.032)
+
+3. Uchikawa, J., Chen, S., Eiler, J.M., Adkins, J.F. and Zeebe, R.E., 2021. Trajectory and timescale of oxygen and clumped isotope equilibration in the dissolved carbonate system under normal and enzymatically-catalyzed conditions at 25 °C. *Geochimica et Cosmochimica Acta*, 314, pp.313–333.  
+   [![DOI](https://img.shields.io/badge/DOI-10.1016%2Fj.gca.2021.08.014-blue)](https://doi.org/10.1016/j.gca.2021.08.014)
+
 
 ## Requirements
 In order to run the scripts you will need Matlab. The codes were produced using Matlab2017b but earlier and later versions will probably work just as well. 
