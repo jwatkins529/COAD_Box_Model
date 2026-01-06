@@ -1,6 +1,6 @@
 clear all
 
-pH=(8:0.05:11.25)'; 
+pH=(8:0.05:12.5)'; 
 xpH = zeros(length(pH),1);
 xd13C_HCO3 = zeros(length(pH),1);
 xd13C_CO3 = zeros(length(pH),1);
@@ -149,7 +149,7 @@ end
 
 %------------Store the steady state values---------------------------------
 xpH(ii) = pH(ii);
-xalpha_c(ii) = alpha_c(end);
+xalpha_o(ii) = alpha_o(end);
 xd13C_HCO3(ii) = d13C_HCO3(end);
 xd13C_CO3(ii) = d13C_CO3(end);
 xd13C_CaCO3(ii) = d13C_CaCO3(end);
@@ -187,11 +187,11 @@ set(gcf,'Position',[500, 500, 500, 1000])                                   %[a,
 % legend('CaCO3 (steady state)','HCO3','CO3','Location','southwest')
 
 subplot(2,1,1)
-plot(xpH,xD18O_CaCO3,'k-',pH_Tang,lna_Tang,'bo')
+plot(xpH,xD18O_CaCO3,'k-',xpH,xD18O_HCO3,'b-',xpH,xD18O_CO3,'r-',pH_Tang,lna_Tang,'bo')
 xlabel('pH')
 ylabel('1000ln\alpha')
-legend('Model (steady state)','Tang et al. (2014)','Location','southwest')
-axis([8 11 5 35])
+legend('CaCO3 (steady state)','HCO3','CO3','Tang et al. (2014)','Location','southwest')
+axis([8 12.5 5 35])
 
 subplot(2,1,2)
 plot(xpH,xD63_CaCO3,'k-',pH_Tang,D47_Tang-AFF,'bo')
@@ -207,4 +207,5 @@ legend('Model (steady state)','Tang et al. (2014)', 'Location','northwest')
 
 %%  
 % file=horzcat(xpH,xD18O_HCO3,xD18O_CO3,xD18O_CaCO3,xD63_HCO3+AFF,xD63_CO3+AFF,xD63_CaCO3+AFF,log10(xRc),xd13C_HCO3,xd13C_CO3,xd13C_CaCO3,xD64_CaCO3+AFF2);
-% save COAD_Box_Model_output.txt file -ascii
+% save Guo_Tang_0p003_lowSA_bottcher.txt file -ascii
+% copyfile ('Guo_Tang_0p003_lowSA_bottcher.txt','/Users/James/Desktop/GMT/GMT_Guo')

@@ -1,6 +1,6 @@
 %% %File: COAD_Box_Model.m
 %Created: 10/14/2021
-%Last modified: 1/10/2022
+%Last modified: 6/3/2022
 %Author: James M. Watkins
 %Department of Earth Sciences, University of Oregon
 %watkins4@uoregon.edu
@@ -26,16 +26,29 @@ function o=setopts(pH)
     o.TK = o.TC+273.15;
     o.S = 0;
     o.pH = pH;
-    o.Ca = 10e-3;
+    o.Ca = 10e-3;                                                               %moles/kg-soln
     o.rVSMOW = 2005.2/1e6;
-    o.V = 5;
+    o.V = 5;                                                                    %kg-soln
     o.kcatKM = 2.7e7;                                                           %Uchikawa and Zeebe (2012)
-    o.CA = 0;                                                                   %Units of moles/L    
-    o.Fluxin = 0.001;                                                             %0.025 is close to the data (mmol/h)
+    o.CA = 0;                                                                   %Units of moles/kg-soln   
+    o.Fluxin = 0.01;                                                             %0.025 is close to the data (mmol/h)
     o.FCO2 = o.Fluxin/1000/60/60;                                               %moles/s
     o.FCaCO3 = 0;
-    o.totalcarb = 0;
-    o.SAcarb = 0.1;                                                             %Representative value. Ranges between 0.05-0.35
+    o.SAcarb = 0.01;                                                             %m2; Max values (end of experiment) range between 0.01 to 0.1 to agree with CO2 flux data
+    
+    %-----------Millero at al. (2006) - seawater---------------------------
+%     o.pK1o = 6320.813/o.TK+19.568224*log(o.TK)-126.34048;       
+%     o.pK1 = 13.4191*o.S^0.5+0.0331*o.S-5.33*10^-5*o.S^2-(530.123*o.S^0.5+6.103*o.S)/o.TK-2.0695*o.S^0.5*log(o.TK)+o.pK1o;
+%     o.pK2o = 5143.692/o.TK+14.613358*log(o.TK)-90.18333;        
+%     o.pK2 = 21.0894*o.S^0.5+0.1248*o.S-3.687*10^-4*o.S^2-(772.483*o.S^0.5+20.051*o.S)/o.TK-3.3336*o.S^0.5*log(o.TK)+o.pK2o;
+%     o.lnKw = 148.96502-13847.26/o.TK-23.6521*log(o.TK)+(118.67/o.TK-5.977+1.0495*log(o.TK))*o.S^0.5-0.01615*o.S;%p258
+%     o.lnK0 = 9345.17/o.TK-60.2409+23.3585*log(o.TK/100)+o.S*(0.023517-0.00023656*o.TK+0.0047036*(o.TK/100)^2);%p.257
+%     o.K1 = 10^(-o.pK1);
+%     o.K2 = 10^(-o.pK2);
+%     o.Kw = exp(o.lnKw); 
+%     o.Ksp = 10^(log10(10^-8.486)+(-0.77712+0.0028426*o.TK+178.34/o.TK)*(o.S^0.5)+(-0.07711)*o.S+0.0041249*(o.S^1.5));%2.0 prefactor is for aragonite
+%     o.K0 = exp(o.lnK0);
+    
     %-----------Millero et al. (2007) - NaCl-------------------------------
     o.mNaCl = 0.0;                                                              %(seawater mNaCl = 0.537) (15 mM from Morrill et al., 2013)
     o.A1 = 35.2911*o.mNaCl^0.5+0.8491*o.mNaCl-0.32*o.mNaCl^1.5+0.055*o.mNaCl^2;
@@ -48,7 +61,7 @@ function o=setopts(pH)
     o.C2 = -6.0346*o.mNaCl^0.5;
     o.pK2o = -83.2997+4821.38/o.TK+13.5962*log(o.TK);
     o.pK2 = o.A2+o.B2/o.TK+o.C2*log(o.TK)+o.pK2o;                               %Millero et al. (2007) - NaCl
-    o.Ksp = 10^-8.38;                                                           %Jacobsen (1974) calculated by Ellen Olsen
+    o.Ksp = 10^-8.48;                                                           %Jacobsen (1974) calculated by Ellen Olsen
     o.lnKw = 148.96502-13847.26/o.TK-23.6521*log(o.TK)+(118.67/o.TK-5.977+1.0495*log(o.TK))*o.S^0.5-0.01615*o.S;%p258
     o.lnK0 = 9345.17/o.TK-60.2409+23.3585*log(o.TK/100)+o.S*(0.023517-0.00023656*o.TK+0.0047036*(o.TK/100)^2);%p.257
     o.K1 = 10^(-o.pK1);
@@ -118,10 +131,11 @@ function o=setopts(pH)
     o.af1 = o.kf1*1.0000;                                                       %Yumol et al. (2020)
     o.bf1 = o.kf1*0.9812;                                                       %Yumol et al. (2020)
     o.cf1 = o.kf1*0.9824;                                                       %Yumol et al. (2020)
-    %o.kf4 = 10^(13.635-2895/o.TK);                                             %Uchikawa and Zeebe (2012)
-    o.A4 = 499002.24*exp(4.2986e-4*o.S^2+5.75499e-5*o.S);                       %Schulz et al. (2006)
-    o.kf4 = o.A4*exp(-90166.83/(8.3145*o.TK))/o.Kw;                             %Schulz et al. (2006)
-    o.af4 = o.kf4*0.9988;                                                       %Christensen et al. (2021) - change to 0.970 for Case B in Fig. 6
+    o.kf4 = 10^(13.635-2895/o.TK);                                             %Uchikawa and Zeebe (2012)
+    %o.A4 = 499002.24*exp(4.2986e-4*o.S^2+5.75499e-5*o.S);                       %Schulz et al. (2006)
+    %o.kf4 = o.A4*exp(-90166.83/(8.3145*o.TK))/o.Kw;                             %Schulz et al. (2006)
+    o.af4 = o.kf4*0.9706;                                                        %Christensen et al. (2021) corrected and extrapolated to 5C 
+    %o.af4 = o.kf4*0.968;                                                        %Model B
     o.bf4 = o.kf4*1.000;                                                        %Christensen et al. (2021)
     o.cf4 = o.kf4/1.019;                                                        %Christensen et al. (2021)
     %----------Backward k's------------------------------------------------
@@ -135,7 +149,8 @@ function o=setopts(pH)
     o.cb4 = o.cf4*o.Kw*o.alpha_db/o.K1;
     %-------Single clumped-------------------------------------------------
     o.KIE_p1 = (4613.8393/o.TK^2-4.0389/o.TK-0.185)/1000+1;                     %Guo (2020) 
-    o.KIE_p4 = (-902.7635/o.TK^2+157.1718/o.TK-0.533)/1000+1;                   %Guo (2020)
+    o.KIE_p4 = (-902.7635/o.TK^2+157.1718/o.TK-0.533)/1000+1;                   %Guo (2020) o.KIE_p4 = 1+0.020/1000
+    %o.KIE_p4 = 1+0.175/1000;%(-902.7635/o.TK^2+157.1718/o.TK-0.533)/1000+1;     %Model B
     o.KIE_s1 = (-5705.688/o.TK^2-41.5925/o.TK-0.015)/1000+1;                    %Guo (2020)
     o.KIE_s4 = (-11771.2832/o.TK^2-62.7060/o.TK+.168)/1000+1;                   %Guo (2020)
     o.pf1 = o.KIE_p1*o.cf1*o.af1/o.kf1;                                         %Table 4 
@@ -199,9 +214,9 @@ function o=setopts(pH)
     o.D47CO2in = 26447/(o.TK^2)+285.51/o.TK-0.3004;                             %Assume CO2 in is in clumped isotope equilibrium
     o.D48CO2in = 29306/(o.TK^2)+93.885/o.TK-0.2914;                             %Assume CO2 in is in clumped isotope equilibrium
     o.r18CO2in = o.oCO2;%(o.d18OCO2in/1000+1)*o.rVSMOW;%                        %Case A
-%     o.d18OCO2in = 32;                                                         %Case C (45.7 is the equilibrium value) - lower d18O of CO2 due to diffusion?
-%     o.r18CO2in = (o.d18OCO2in/1000+1)*o.rVSMOW;%                              %Case C
-%     o.D47CO2in = 26447/(o.TK^2)+285.51/o.TK-0.3004+0.10;                      %Case C - the '+0.10' represents higher D47 of CO2 due to diffusion
+%     o.d18OCO2in = 41;                                                         %Case C (45.7 is the equilibrium value) - lower d18O of CO2 due to diffusion?
+%    o.r18CO2in = (o.d18OCO2in/1000+1)*o.rVSMOW;%                               %Case C
+%    o.D47CO2in = 26447/(o.TK^2)+285.51/o.TK-0.3004+0.075;                      %Case C - the '+0.075' represents higher D47 of CO2 due to diffusion
     o.r13CO2in = (o.d13CCO2in/1000+1)*0.01118;
     o.R47CO2in = (o.D47CO2in/1000+1)*o.r13CO2in*2*o.r18CO2in;
     o.R48CO2in = (o.D48CO2in/1000+1)*o.r18CO2in^2;
@@ -246,7 +261,7 @@ function dy=carbonate(t,y,TC,TK,pH,FCO2,kf1,af1,bf1,cf1,pf1,sf1,pf1p,sf1p,kf4,af
     if omega < 1
           FCaCO3 = 0;
     else
-          FCaCO3 = SAcarb*R_c;
+          FCaCO3 = SAcarb*R_c;                                                  %moles/s
     end
 %Validation notes: (1) if FCO2 = 0 and omega = 1, then the output is the
 %equilibrium value with no time-dependence. 

@@ -113,7 +113,9 @@ for i = 1:length(out(:,1))
     omega(i) = Ca(i)*C2666(i)/o.Ksp; 
     FCO2(i) = o.FCO2;
     Fluxin(i) = o.Fluxin;
-
+    calcite_equilibrium(i) = 1000*log(o.alpha_xw);
+    HCO3eq(i) = 1000*log(o.alpha_bw);
+    CO3eq(i) = 1000*log(o.alpha_cw);
     if omega(i) < 1
         FCaCO3(i) = 0;
         else
@@ -174,5 +176,6 @@ xlabel('Time')
 legend('CO3','HCO3','CaCO3','Location','northeast')
 
 %%  
-% file=horzcat(xpH,xD18O_HCO3,xD18O_CO3,xD18O_CaCO3,xD63_HCO3+AFF,xD63_CO3+AFF,xD63_CaCO3+AFF,log10(xRc),xd13C_HCO3,xd13C_CO3,xd13C_CaCO3,xD64_CaCO3+AFF2);
-% save COAD_Box_Model_output.txt file -ascii
+% file=horzcat(time/60/60,Fluxin,FCaCO3,1000*log((d18O_CO3+1000)/(o.d18Ow+1000)),1000*log((d18O_HCO3+1000)/(o.d18Ow+1000)),1000*log((d18O_CaCO3+1000)/(o.d18Ow+1000)),CO3eq',HCO3eq',calcite_equilibrium',D63_CO3+AFF,D63_HCO3+AFF,D63_CaCO3+AFF,d13C_CO2,d13C_HCO3,d13C_CO3,d13C_CaCO3,D64_HCO3+AFF2,D64_CO3+AFF2,D64_CaCO3+AFF2,omega,log10(R_c),D47_CO2);
+% save model_behavior_highpH.txt file -ascii
+% copyfile ('model_behavior_highpH.txt','/Users/James/Desktop/GMT/GMT_Guo')

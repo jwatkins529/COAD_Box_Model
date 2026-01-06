@@ -121,7 +121,7 @@ function o=setopts()
     %o.kf4 = 10^(13.635-2895/o.TK);                                             %Uchikawa and Zeebe (2012)
     o.A4 = 499002.24*exp(4.2986e-4*o.S^2+5.75499e-5*o.S);                       %Schulz et al. (2006)
     o.kf4 = o.A4*exp(-90166.83/(8.3145*o.TK))/o.Kw;                             %Schulz et al. (2006)
-    o.af4 = o.kf4*0.9988;                                                       %Christensen et al. (2021) - change to 0.970 for Case B in Fig. 6
+    o.af4 = o.kf4*0.978;                                                        %Christensen et al. (2021) - corrected
     o.bf4 = o.kf4*1.000;                                                        %Christensen et al. (2021)
     o.cf4 = o.kf4/1.019;                                                        %Christensen et al. (2021)
     %----------Backward k's------------------------------------------------
